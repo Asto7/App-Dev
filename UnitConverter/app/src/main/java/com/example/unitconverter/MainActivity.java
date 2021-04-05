@@ -2,9 +2,12 @@ package com.example.unitconverter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -76,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void convert(View view) {
 
+        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        if (imm != null && this.getCurrentFocus() != null)
+            imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 
         String fromString = (String) fromSpinner.getSelectedItem();
         String toString = (String) toSpinner.getSelectedItem();
