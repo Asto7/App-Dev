@@ -171,7 +171,7 @@ public class Converter {
         }
         switch (FROM) {
             case "DEGREE":
-                value = (value * Math.PI / 180);
+                value = (value / (Math.PI * 180));
                 break;
             case "GRADIAN":
                 value = (value / 63.6619783228);
