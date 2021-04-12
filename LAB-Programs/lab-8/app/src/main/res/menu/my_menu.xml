@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="Home Page"
+        android:visible="true"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/show_all"
+        android:icon="@drawable/show_one"
+        android:title="Show all"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/show_one"
+        android:icon="@drawable/show_all"
+        android:title="Show One"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/edit_one"
+        android:icon="@drawable/edit_one"
+        android:title="Update One"
+        app:showAsAction="always" />
+
+</menu>

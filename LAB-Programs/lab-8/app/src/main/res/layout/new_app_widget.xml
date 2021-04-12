@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/widget_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/widget_margin"
+    android:theme="@style/ThemeOverlay.Lab8.AppWidgetContainer">
+
+    <TextView
+        android:id="@+id/appwidget_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/cardview_light_background"
+        android:contentDescription="@string/appwidget_text"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Available Products"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/product_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lineHeight="2dp"
+
+        android:paddingLeft="50dp"
+        android:paddingTop="20dp"
+        android:textAlignment="viewStart"
+        android:textColor="@color/light_blue_900"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        tools:ignore="RtlCompat" />
+
+</LinearLayout>
