@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    tools:context=".NameActivity">
+
+    <TextView
+        android:id="@+id/textGreet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Enter Player Name"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold|italic">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/player1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="Name"
+                android:background="@color/very_light_gray"
+                android:hint="Player-1 Name"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:lines="1"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <LinearLayout
+            android:id="@+id/parentPlayer2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold|italic">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/player2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="Name"
+                    android:background="@color/very_light_gray"
+                    android:hint="Player-2 Name"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_state_green_gray"
+        android:onClick="Submit"
+        android:paddingStart="50dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="50dp"
+        android:paddingBottom="10dp"
+        android:text="Submit"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</LinearLayout>

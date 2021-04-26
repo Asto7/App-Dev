@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:layout_margin="20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textGreet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Game Mode!"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        android:textStyle="bold|italic" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/btn_state_green_gray"
+            android:paddingStart="50dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="50dp"
+            android:onClick="singlePlayer"
+            android:paddingBottom="10dp"
+            android:text="Single Player"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="multiPlayer"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/btn_state_green_gray"
+            android:paddingStart="50dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="50dp"
+            android:paddingBottom="10dp"
+            android:text="Multi Player"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</LinearLayout>
