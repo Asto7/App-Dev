@@ -18,6 +18,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="btnColor">#200E2C</color>
     <color name="transparent">#00FFFFFF</color>
 
     <color name="green">#FF82C052</color>

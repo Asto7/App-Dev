@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -70,6 +71,9 @@ public class MultiActivity extends AppCompatActivity {
         rollBtn.setText(pl1Name + " TURN");
         rollBtn2.setText(pl2Name + " TURN");
 
+        rollBtn2.setEnabled(false);
+
+
         resetAll();
 
 
@@ -125,12 +129,18 @@ public class MultiActivity extends AppCompatActivity {
         numOfTurns = 6;
         turnsView.setText("Turns Left = " + ((numOfTurns + 1) / 2));
         turn = 1;
+
         p1ScoreText.setText(pl1Name + " = 0");
         p2ScoreText.setText(pl2Name + " = 0");
+
         diePic.setImageResource(R.drawable.fulldice);
         diePic2.setImageResource(R.drawable.fulldice);
+
         rollBtn.setText(pl1Name + " Turn");
+        rollBtn2.setText(pl2Name + " Turn");
+
         rollBtn.setEnabled(true);
+        rollBtn2.setEnabled(false);
     }
 
     private void diceRotate() {
@@ -174,12 +184,14 @@ public class MultiActivity extends AppCompatActivity {
                 }
 
                 if (turn == 1) {
+
                     p1score += num;
                     String p1text = pl1Name + " = " + Integer.toString(p1score);
                     p1ScoreText.setText(p1text);
                     turn *= -1;
+
                     if (numOfTurns <= 0) {
-//                        Toast.makeText(GameActivity.this, pl1Name + " Won with score " + p1score, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MultiActivity.this, pl1Name + " Won with score " + p1score, Toast.LENGTH_SHORT).show();
                         turnsView.setText((pl1Name + " Won with score " + p1score));
                         rollBtn.setText("Press Reset");
                         rollBtn.setEnabled(false);
@@ -190,6 +202,7 @@ public class MultiActivity extends AppCompatActivity {
 
 
                 } else if (turn == -1) {
+
                     p2score += num;
                     String p2text = pl2Name + " = " + Integer.toString(p2score);
                     p2ScoreText.setText(p2text);
@@ -198,7 +211,7 @@ public class MultiActivity extends AppCompatActivity {
                     rollBtn.setEnabled(true);
 
                     if (numOfTurns <= 0) {
-//                        Toast.makeText(GameActivity.this, pl2Name + " Won with score " + p2score, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MultiActivity.this, pl2Name + " Won with score " + p2score, Toast.LENGTH_SHORT).show();
                         turnsView.setText((pl1Name + " Won with score " + p1score));
                         rollBtn.setText("Press Reset");
                         rollBtn.setEnabled(false);
@@ -216,18 +229,14 @@ public class MultiActivity extends AppCompatActivity {
         });
 
         diePic.startAnimation((rolling));
-
-
     }
 
 
     private void diceRotate2() {
         int num = rnd.nextInt(6) + 1;
 
-
         Animation rolling = AnimationUtils.loadAnimation(this, R.anim.rotate);
         diePic2.setImageResource(R.drawable.fulldice);
-
 
         rolling.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -237,6 +246,7 @@ public class MultiActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
+
                 numOfTurns -= 1;
                 turnsView.setText("Turns Left = " + ((numOfTurns + 1) / 2));
 
@@ -262,12 +272,15 @@ public class MultiActivity extends AppCompatActivity {
                 }
 
                 if (turn == 1) {
+
                     p1score += num;
                     String p1text = pl1Name + " = " + Integer.toString(p1score);
                     p1ScoreText.setText(p1text);
                     turn *= -1;
+
+
                     if (numOfTurns <= 0) {
-//                        Toast.makeText(GameActivity.this, pl1Name + " Won with score " + p1score, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MultiActivity.this, pl1Name + " Won with score " + p1score, Toast.LENGTH_SHORT).show();
                         turnsView.setText((pl1Name + " Won with score " + p1score));
 
                         rollBtn.setText("Press Reset");
@@ -286,7 +299,7 @@ public class MultiActivity extends AppCompatActivity {
 
 
                     if (numOfTurns <= 0) {
-//                        Toast.makeText(GameActivity.this, pl2Name + " Won with score " + p2score, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MultiActivity.this, pl2Name + " Won with score " + p2score, Toast.LENGTH_SHORT).show();
                         turnsView.setText((pl1Name + " Won with score " + p1score));
                         rollBtn.setText("Press Reset");
                         rollBtn.setEnabled(false);
@@ -308,10 +321,25 @@ public class MultiActivity extends AppCompatActivity {
     }
 
     public void btnOnlick(View view) {
+        rollBtn.setEnabled(false);
+        rollBtn2.setEnabled(false);
+
         diceRotate();
+
+        if (numOfTurns > 0) {
+            rollBtn2.setEnabled(true);
+        }
     }
 
     public void btnOnlick2(View view) {
+        rollBtn.setEnabled(false);
+        rollBtn2.setEnabled(false);
+
+
         diceRotate2();
+
+        if (numOfTurns > 0) {
+            rollBtn.setEnabled(true);
+        }
     }
 }
