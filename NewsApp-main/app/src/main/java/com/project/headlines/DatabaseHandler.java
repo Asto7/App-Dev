@@ -15,7 +15,6 @@ import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 public class DatabaseHandler extends SQLiteOpenHelper {
 
     // Database Version
