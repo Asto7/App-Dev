@@ -19,14 +19,6 @@ public class LocaleHelper {
         return setLocale(context, lang);
     }
 
-    public static Context onAttach(Context context, String defaultLanguage) {
-        String lang = getPersistedData(context, defaultLanguage);
-        return setLocale(context, lang);
-    }
-
-    public static String getLanguage(Context context) {
-        return getPersistedData(context, Locale.getDefault().getLanguage());
-    }
 
     public static Context setLocale(Context context, String language) {
         persist(context, language);
@@ -62,7 +54,6 @@ public class LocaleHelper {
         return context.createConfigurationContext(configuration);
     }
 
-    @SuppressWarnings("deprecation")
     private static Context updateResourcesLegacy(Context context, String language) {
         Locale locale = new Locale(language);
         Locale.setDefault(locale);

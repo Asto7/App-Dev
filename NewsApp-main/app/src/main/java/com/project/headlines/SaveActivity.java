@@ -1,4 +1,4 @@
-package com.project.headlines.activities;
+package com.project.headlines;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +13,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,15 +24,12 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.project.headlines.DatabaseHandler;
-import com.project.headlines.R;
 import com.project.headlines.adapters.AdapterListNews;
 import com.project.headlines.clicklisteners.AdapterItemClickListener;
 import com.project.headlines.clicklisteners.NewsDialogClickListeners;
 import com.project.headlines.databinding.NewsDialogBinding;
 import com.project.headlines.model.News;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;

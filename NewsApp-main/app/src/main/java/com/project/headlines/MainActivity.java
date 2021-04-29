@@ -1,4 +1,4 @@
-package com.project.headlines.activities;
+package com.project.headlines;
 
 import android.app.Dialog;
 import android.app.SearchManager;
@@ -33,8 +33,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.project.headlines.DatabaseHandler;
-import com.project.headlines.R;
 import com.project.headlines.adapters.AdapterListNews;
 import com.project.headlines.clicklisteners.AdapterItemClickListener;
 import com.project.headlines.clicklisteners.NewsDialogClickListeners;
