@@ -85,7 +85,7 @@ public class News {
 
     @NonNull
     public String getNewsPublishedDate() {
-        return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(newsPublishedDate);
+        return new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(newsPublishedDate);
     }
 
     public void setNewsPublishedDate(@NonNull Date newsPublishedDate) {
@@ -93,7 +93,7 @@ public class News {
     }
 
     //Added for Child JSON Object
-    public class Source {
+    public static class Source {
         @SerializedName("name")
         private String sourceName;
 

@@ -13,11 +13,14 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Toast;
 
@@ -125,9 +128,7 @@ public class SaveActivity extends AppCompatActivity implements LifecycleOwner, A
                     dbSavedItem.removeNews(news);
                     onDismissClick();
                     refresh();
-                    Toast.makeText(context, "Successfully Removed", 0).show();
-                } else {
-                    Toast.makeText(context, "Article Doesn't Exist", 0).show();
+                    Toast.makeText(context, "Removed from Bookmark!", 0).show();
                 }
             }
 
@@ -137,13 +138,22 @@ public class SaveActivity extends AppCompatActivity implements LifecycleOwner, A
             }
         });
 
+
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
         dialog.setContentView(binding.getRoot());
+
+        int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
+
+        View main_root = dialog.findViewById(R.id.dialog_root);
+        ViewGroup.LayoutParams layoutParams = main_root.getLayoutParams();
+        layoutParams.width = width;
+        main_root.setLayoutParams(layoutParams);
+
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setCancelable(true);
 
         ifg = dialog.findViewById(R.id.saved_item);
-        ifg.setBackgroundResource(R.drawable.ic_delete_foreground);
+        ifg.setBackgroundResource(R.mipmap.ic_remove);
 
         dialog.show();
     }

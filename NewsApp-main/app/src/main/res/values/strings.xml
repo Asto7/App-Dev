@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Latest Headlines</string>
-    <string name="news_api_key" translatable="false">YOUR_NEWS_API_KEY</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
     <string name="category_business">Business</string>
@@ -10,7 +9,7 @@
     <string name="category_sports">Sports</string>
     <string name="category_technology">Technology</string>
     <string name="news">News</string>
-    <string name="news_dialog_info">Go to Website for more details.</string>
+    <string name="news_dialog_info">Visit Website for More Details!</string>
     <string name="goto_website">Go to Website</string>
     <string name="search_in_everything">Search in everything…</string>
 </resources>

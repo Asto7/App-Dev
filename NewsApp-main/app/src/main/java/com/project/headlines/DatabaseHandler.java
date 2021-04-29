@@ -33,6 +33,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_SAVE_ITEM_URL = "save_item_url";
     private static final String COLUMN_SAVE_ITEM_URL_TO_IMAGE = "save_item_url_to_image";
     private static final String COLUMN_SAVE_ITEM_PUBLISHED_DATE = "save_item_published_date";
+    private static final String COLUMN_SAVE_ITEM_SOURCE_NAME = "save_item_source_name";
+
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -46,9 +48,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_PRODUCT_TABLE = "CREATE TABLE " + TABLE_HEADLINE + "("
-                + COLUMN_SAVE_ITEM_TITLE + " TEXT," + COLUMN_SAVE_ITEM_DESCRIPTION + " TEXT,"
-                + COLUMN_SAVE_ITEM_URL + " TEXT," + COLUMN_SAVE_ITEM_URL_TO_IMAGE + " TEXT," +
-                COLUMN_SAVE_ITEM_PUBLISHED_DATE + " TEXT" + ")";
+                + COLUMN_SAVE_ITEM_TITLE + " TEXT,"
+                + COLUMN_SAVE_ITEM_DESCRIPTION + " TEXT,"
+                + COLUMN_SAVE_ITEM_URL + " TEXT,"
+                + COLUMN_SAVE_ITEM_URL_TO_IMAGE + " TEXT,"
+                + COLUMN_SAVE_ITEM_PUBLISHED_DATE + " TEXT,"
+                + COLUMN_SAVE_ITEM_SOURCE_NAME + " TEXT" + ")";
 
         db.execSQL(CREATE_PRODUCT_TABLE);
     }
@@ -59,7 +64,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 COLUMN_SAVE_ITEM_DESCRIPTION,
                 COLUMN_SAVE_ITEM_URL,
                 COLUMN_SAVE_ITEM_URL_TO_IMAGE,
-                COLUMN_SAVE_ITEM_PUBLISHED_DATE};
+                COLUMN_SAVE_ITEM_PUBLISHED_DATE,
+                COLUMN_SAVE_ITEM_SOURCE_NAME};
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -90,6 +96,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_SAVE_ITEM_URL, news.getNewsUrl());
         values.put(COLUMN_SAVE_ITEM_URL_TO_IMAGE, news.getNewsImage());
         values.put(COLUMN_SAVE_ITEM_PUBLISHED_DATE, news.getNewsPublishedDate());
+        values.put(COLUMN_SAVE_ITEM_SOURCE_NAME, news.getSource().getSourceName());
 
         db.insert(TABLE_HEADLINE, null, values);
         db.close();
@@ -107,10 +114,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 COLUMN_SAVE_ITEM_DESCRIPTION,
                 COLUMN_SAVE_ITEM_URL,
                 COLUMN_SAVE_ITEM_URL_TO_IMAGE,
-                COLUMN_SAVE_ITEM_PUBLISHED_DATE
+                COLUMN_SAVE_ITEM_PUBLISHED_DATE,
+                COLUMN_SAVE_ITEM_SOURCE_NAME
         };
 
-        String sortOrder = COLUMN_SAVE_ITEM_PUBLISHED_DATE + " ASC";
+        String sortOrder = COLUMN_SAVE_ITEM_PUBLISHED_DATE + " DESC";
 
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -127,12 +135,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 News news = new News();
+                News.Source src = new News.Source();
+
                 news.setNewsTitle((cursor.getString(cursor.getColumnIndex(COLUMN_SAVE_ITEM_TITLE))));
                 news.setNewsDescription(cursor.getString(cursor.getColumnIndex(COLUMN_SAVE_ITEM_DESCRIPTION)));
                 news.setNewsUrl((cursor.getString(cursor.getColumnIndex(COLUMN_SAVE_ITEM_URL))));
                 news.setNewsImage((cursor.getString(cursor.getColumnIndex(COLUMN_SAVE_ITEM_URL_TO_IMAGE))));
-                news.setNewsPublishedDate(stringToDate((cursor.getString(cursor.getColumnIndex(COLUMN_SAVE_ITEM_PUBLISHED_DATE))), "dd/MM/yyyy HH:mm:ss"));
+                news.setNewsPublishedDate(stringToDate((cursor.getString(cursor.getColumnIndex(COLUMN_SAVE_ITEM_PUBLISHED_DATE))), "dd/MM/yyyy"));
+                src.setSourceName(cursor.getString(cursor.getColumnIndex(COLUMN_SAVE_ITEM_SOURCE_NAME)));
+
+                news.setSource(src);
                 newsList.add(news);
+
             } while (cursor.moveToNext());
         }
         cursor.close();

@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -281,10 +282,10 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner, A
             public void onSaveClick(News news) {
                 if (!dbSavedItem.checkIfAlreadyExists(news.getNewsUrl())) {
                     dbSavedItem.addNews(news);
-                    Toast.makeText(context, "Added", 0).show();
+                    Toast.makeText(context, "Added as Bookmark!", 0).show();
 
                 } else {
-                    Toast.makeText(context, "Already exists", 0).show();
+                    Toast.makeText(context, "Already exists in Bookmark!", 0).show();
                 }
 
             }
@@ -297,6 +298,14 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner, A
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
         dialog.setContentView(binding.getRoot());
+
+        int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
+
+        View main_root = dialog.findViewById(R.id.dialog_root);
+        ViewGroup.LayoutParams layoutParams = main_root.getLayoutParams();
+        layoutParams.width = width;
+        main_root.setLayoutParams(layoutParams);
+
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setCancelable(true);
 

@@ -8,6 +8,6 @@
 
     <item
         android:id="@+id/navigation_saved"
-        android:icon="@drawable/ic_saved_item"
-        android:title="Saved Articles" />
+        android:icon="@drawable/ic_bookmark_nav_foreground"
+        android:title="Bookmarks" />
 </menu>
