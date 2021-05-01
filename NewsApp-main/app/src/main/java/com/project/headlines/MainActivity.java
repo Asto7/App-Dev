@@ -33,7 +33,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.project.headlines.adapters.AdapterListNews;
 import com.project.headlines.clicklisteners.AdapterItemClickListener;
 import com.project.headlines.clicklisteners.NewsDialogClickListeners;
 import com.project.headlines.databinding.NewsDialogBinding;

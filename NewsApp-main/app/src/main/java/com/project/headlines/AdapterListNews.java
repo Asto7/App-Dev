@@ -1,4 +1,4 @@
-package com.project.headlines.adapters;
+package com.project.headlines;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.project.headlines.R;
 import com.project.headlines.clicklisteners.AdapterItemClickListener;
 import com.project.headlines.databinding.NewsBinding;
 import com.project.headlines.model.News;
