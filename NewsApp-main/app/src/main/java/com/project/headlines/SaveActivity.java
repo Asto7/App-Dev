@@ -3,6 +3,7 @@ package com.project.headlines;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterButton;
+import androidx.core.widget.NestedScrollView;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +22,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -43,6 +46,9 @@ public class SaveActivity extends AppCompatActivity implements LifecycleOwner, A
     DatabaseHandler dbSavedItem;
     Context context;
     ImageFilterButton ifg;
+
+    NestedScrollView scrollView;
+    TextView noItemNotice;
 
     private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -73,6 +79,8 @@ public class SaveActivity extends AppCompatActivity implements LifecycleOwner, A
         bottom_nav.setSelectedItemId(R.id.navigation_saved);
 
         bottom_nav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        scrollView = findViewById(R.id.nested_scroll_view);
+        noItemNotice = findViewById(R.id.noItems);
 
         dbSavedItem = new DatabaseHandler(this);
         context = this;
@@ -83,6 +91,26 @@ public class SaveActivity extends AppCompatActivity implements LifecycleOwner, A
 
     private void refresh() {
         newsList = dbSavedItem.getAllNews();
+
+        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                0,
+                0
+        );
+
+        LinearLayout.LayoutParams param2 = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                0,
+                9
+        );
+
+        if (newsList.size() <= 0) {
+            noItemNotice.setLayoutParams(param2);
+            scrollView.setLayoutParams(param);
+        } else {
+            noItemNotice.setLayoutParams(param);
+            scrollView.setLayoutParams(param2);
+        }
 
         adapterListNews = new AdapterListNews(newsList, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));

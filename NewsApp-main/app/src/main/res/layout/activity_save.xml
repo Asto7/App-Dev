@@ -26,6 +26,24 @@
             android:textSize="32sp"
             android:textStyle="bold|italic" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0" />
+
+        <TextView
+            android:id="@+id/noItems"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="No Articles saved as Bookmark!"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="18sp"
+            android:textStyle="bold|italic" />
+
+
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nested_scroll_view"
             android:layout_width="match_parent"
@@ -54,7 +72,6 @@
         </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
