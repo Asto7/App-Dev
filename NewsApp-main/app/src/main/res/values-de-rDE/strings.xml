@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Latest Headlines</string>
-    <string name="news">Nachrichten</string>
     <string name="category_technology">Technologie</string>
     <string name="category_sports">Sport</string>
     <string name="category_science">Wissenschaft</string>
